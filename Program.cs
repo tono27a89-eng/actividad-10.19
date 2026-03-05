@@ -60,6 +60,7 @@ namespace actividad_10._19
                                 Console.WriteLine("ingrese nueva nota: ");
                                 double.TryParse (Console.ReadLine(), out num);
                                 notas[nombre] = num;
+                                validar2 = true;
                             }
                             else
                             {
