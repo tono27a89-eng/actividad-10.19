@@ -13,11 +13,15 @@ namespace actividad_10._19
             Console.WriteLine("Cree un sistema de notas donde el usuario pueda ingresar estudiantes, modificar notas y mostrarlas.");
             Dictionary <string, double> notas = new Dictionary<string, double>();
             int opcion;
+            string nombre;
+            double num;
+
+            bool validar=false;
             do
             {
-                Console.WriteLine("1. ingresar empleado");
-                Console.WriteLine("2. modificar");
-                Console.WriteLine("3. ver empleados");
+                Console.WriteLine("1. ingresar notas");
+                Console.WriteLine("2. modificar notas");
+                Console.WriteLine("3. ver notas");
                 Console.WriteLine("0. salir");
                 int.TryParse(Console.ReadLine(), out opcion);
                 switch (opcion)
@@ -29,41 +33,44 @@ namespace actividad_10._19
                         {
 
 
-                            Console.WriteLine($"Ingrese Id de empleado");
-                            int.TryParse(Console.ReadLine(), out ID);
-                            if (empleado.ContainsKey(ID))
+                            Console.WriteLine($"Ingrese nombre de estudiante: ");
+                            nombre = Console.ReadLine();
+                            if (notas.ContainsKey(nombre))
                             {
-                                Console.WriteLine("nombre ya ingresado ingrese otro");
+                                Console.WriteLine("nombre ya existente ingrese otro");
                                 i--;
                             }
                             else
                             {
-                                Console.WriteLine("ingrese nombre:");
-                                nombre = Console.ReadLine();
-                                empleado.Add(ID, nombre);
+                                Console.WriteLine("ingrese notas: ");
+                                double.TryParse(Console.ReadLine(), out num);
+                                notas.Add(nombre,num);
 
                             }
                         }
                         break;
                     case 2:
-                        Console.WriteLine("ingrese el ID que desea modificar");
-                        int.TryParse(Console.ReadLine(), out ID);
-                        if (empleado.ContainsKey(ID))
-                        {
-                            Console.WriteLine("ingrese nuevo nombre: ");
-                            nombre = Console.ReadLine();
-                            empleado[ID] = nombre;
+                        bool validar2 = false;
+                        while (validar2 != true)
+                        { 
+                            Console.WriteLine("ingrese nombre de estudiante que desea modificar");
+                            nombre=Console.ReadLine();
+                            if (notas.ContainsKey(nombre))
+                            {
+                                Console.WriteLine("ingrese nueva nota: ");
+                                double.TryParse (Console.ReadLine(), out num);
+                                notas[nombre] = num;
+                            }
+                            else
+                            {
+                                Console.WriteLine("ID no encontrado");
+                            }
                         }
-                        else
-                        {
-                            Console.WriteLine("ID no encontrado");
-                        }
-
                         break;
                     case 3:
-                        foreach (var item in empleado)
+                        foreach (var item in notas)
                         {
-                            Console.WriteLine(" el ID: " + item.Key + " empleado: " + item.Value);
+                            Console.WriteLine(" el nombre: " + item.Key + " notas: " + item.Value);
                         }
                         break;
                     case 0:
