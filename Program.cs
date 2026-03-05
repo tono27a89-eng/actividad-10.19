@@ -19,7 +19,7 @@ namespace actividad_10._19
             bool validar=false;
             do
             {
-                Console.WriteLine("1. ingresar notas");
+                Console.WriteLine("1. ingresar estudiantes");
                 Console.WriteLine("2. modificar notas");
                 Console.WriteLine("3. ver notas");
                 Console.WriteLine("0. salir");
@@ -27,7 +27,7 @@ namespace actividad_10._19
                 switch (opcion)
                 {
                     case 1:
-                        Console.WriteLine("ingrese cantidad de empleados que desae ingresar: ");
+                        Console.WriteLine("ingrese cantidad de estudiantes que desae ingresar: ");
                         int.TryParse(Console.ReadLine(), out int lim);
                         for (int i = 0; i < lim; i++)
                         {
